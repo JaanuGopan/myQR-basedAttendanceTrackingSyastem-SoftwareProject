@@ -12,7 +12,7 @@ function LoginPage() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "localhost:8080/api/v1/auth/authendicate",
+        "http://localhost:8080/api/v1/auth/authendicate", // Corrected endpoint URL
         {
           email: email,
           password: password,

@@ -1,9 +1,11 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Navbar from "../layout/navigationbar/Navbar";
 
 function HomePage() {
   return (
     <div className="container">
+      <Navbar />
       <header className="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
         <a
           href="/"

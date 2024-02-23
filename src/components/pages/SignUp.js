@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function LoginPage() {
+  const [firstname, setFirstName] = useState("");
+  const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -12,8 +14,10 @@ function LoginPage() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/v1/auth/authenticate", // Corrected endpoint URL
+        "http://localhost:8080/api/v1/auth/register", // Corrected endpoint URL
         {
+          firstname: firstname,
+          lastname: lastname,
           email: email,
           password: password,
         }
@@ -51,6 +55,30 @@ function LoginPage() {
             <div className="card-body">
               <h5 className="card-title text-center mb-4">Login</h5>
               <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                  <label htmlFor="firstname" className="form-label">
+                    firstname
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="firstname"
+                    value={firstname}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="lastname" className="form-label">
+                    lastname
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="lastname"
+                    value={lastname}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                </div>
                 <div className="mb-3">
                   <label htmlFor="email" className="form-label">
                     Email
